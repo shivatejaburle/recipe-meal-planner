@@ -1,0 +1,20 @@
+{% extends 'base_master.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    <img src="{% static 'planner/img/rmp.png' %}" alt="rmp" width="200">
+    <h1 class="text-body-emphasis">Recipe Meal Planner</h1>
+    <p class="col-lg-8 mx-auto fs-5 text-muted">
+      If you love meal planning and staying organized, Plan to Eat was created for you!
+    </p>
+    <div class="d-inline-flex gap-2 mb-5">
+      <button class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" type="button">
+        Get Started
+      </button>
+
+    </div>
+  </div>
+</div>
+{% endblock content %}

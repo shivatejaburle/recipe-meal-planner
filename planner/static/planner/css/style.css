@@ -1,0 +1,33 @@
+body
+{
+    background-size: cover;
+    overflow: hidden;
+}
+.shade
+{
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 105%;
+    height: 110vh;
+    margin-top: -20px;
+}
+section
+{
+    color: white;
+    display: flex;
+    /* Horizontal */
+    justify-content: center;
+    /* Vertical */
+    align-items: center;
+    height: 400px;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial;
+}
+main
+{
+    margin-top: 50px;
+}
+.title
+{
+    font-size: 50px;
+}

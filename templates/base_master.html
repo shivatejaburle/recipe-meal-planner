@@ -1,0 +1,36 @@
+{% load bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% block title %}
+                Recipe Meal Planner
+            {% endblock title %}
+        </title>
+        <link rel="shortcut icon" href="{% static 'planner/img/favicon.ico' %}" type="image/x-icon">
+        <!-- Bootstrap CSS -->
+        {% bootstrap_css %}
+    </head>
+    <body>
+        <header>
+            <!-- Navbar -->
+            {% include 'includes/navbar.html' %}
+        </header>
+
+        <!-- Messages -->
+        <div class="container mt-3">
+            {% bootstrap_messages %}
+        </div>
+
+        <!-- Content -->
+        {% block content %}
+            
+        {% endblock content %}
+        
+        <!-- Bootstrap JS -->
+        {% bootstrap_javascript %}
+    </body>
+</html>
