@@ -1,0 +1,22 @@
+{% extends 'account/base_entrance.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Tech Hub - Login
+{% endblock title %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1>Sign In</h1>
+        <p>
+            If you have not created an account yet, then please
+            <a href="{{ signup_url }}">sign up</a> first.
+        </p>
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button type="submit" class="btn btn-primary">Sign In</button>
+        </form>
+    </div>
+{% endblock content %}
