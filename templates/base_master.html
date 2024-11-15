@@ -15,10 +15,14 @@
         {% bootstrap_css %}
     </head>
     <body>
+        <!-- Header -->
         <header>
-            <!-- Navbar -->
-            {% include 'includes/navbar.html' %}
+            {% block header %}
+                <!-- Navbar -->
+                {% include 'includes/navbar.html' %}
+            {% endblock header %}
         </header>
+        
 
         <!-- Messages -->
         <div class="container mt-3">

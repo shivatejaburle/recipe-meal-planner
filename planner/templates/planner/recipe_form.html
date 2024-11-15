@@ -1,0 +1,33 @@
+{% extends 'base_master.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Create a New Recipe
+{% endblock title %}
+
+{% block content %}
+    <div class="container mt-3">
+        
+        {% if form_type == 'Update' %}
+            <h1>Update a Recipe</h1>
+        {% else %}
+            <h1>Create a New Recipe</h1>
+        {% endif %}
+        <hr>
+
+        <form class="mb-3" action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <button type="submit" class="btn btn-primary">
+                {% if form_type == 'Update' %}
+                    Update Recipe
+                {% else %}
+                    Create Recipe
+                {% endif %}
+           </button>
+            <button type="button" class="btn btn-danger" 
+                onclick="window.location='{% url 'planner:recipe_list' %}'">Cancel</button>
+        </form>
+    </div>
+{% endblock content %}

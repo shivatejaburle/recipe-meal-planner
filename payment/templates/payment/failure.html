@@ -1,0 +1,19 @@
+{% extends 'base_master.html' %}
+{% load static %}
+
+{% block header %}
+  {% include 'payment/includes/navbar.html' %}
+{% endblock header %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    <!-- <img src="{% static 'planner/img/rmp.png' %}" alt="rmp" width="200"> -->
+    <h1 class="text-body-emphasis">Recipe Meal Planner</h1>
+    <img class="img-fluid" src="{% static 'payment/img/payment-failed.png' %}" alt="payment-failed">
+    <div class="mx-5 mt-3">
+      <a class="btn btn-warning btn-lg" href="{% url 'payment:donate' %}">Please Try Again</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}

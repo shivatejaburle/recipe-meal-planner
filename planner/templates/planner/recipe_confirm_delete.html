@@ -1,0 +1,37 @@
+{% extends 'base_master.html' %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1>Delete Recipe</h1>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            <h1>Are you sure want to delete the <span class="text-danger">"{{recipe.recipe_name}}"</span> recipe from your meal plan ?</h1>
+            <div class="table-responsive">
+                <table class="table table-danger">
+                    <thead>
+                      <tr>
+                        <th scope="col">Day</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Recipe Name</th>
+                        <th scope="col">Recipe Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{recipe.get_weekday_label}}</td>
+                            <td>{{recipe.get_meal_type_label}}</td>
+                            <td>{{recipe.recipe_name}}</td>
+                            <td>{{recipe.recipe_description}}</td>
+                        </tr> 
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                <button type="submit" class="btn btn-danger">Yes, I am sure!</button>
+                <button type="button" class="btn btn-secondary"
+                    onclick = "window.location='{% url 'planner:recipe_list' %}'">No, take me back</button>
+            </p>
+        </form>
+    </div>
+{% endblock content %}

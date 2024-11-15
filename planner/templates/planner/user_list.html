@@ -1,0 +1,50 @@
+{% extends 'base_master.html' %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="row justify-content-between">
+          <div class="col-6">
+            <h1>Meal Plan Creators</h1>
+          </div>
+          <div class="col-6">
+            
+          </div>
+        </div>
+        <hr>
+        {% if user_list %}
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for user in user_list  %}
+                  <tr>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.username}}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-primary"
+                            onclick="window.location = '{% url 'planner:user_recipe_view' user.id %}'">
+                          Get Meal Plan
+                        </button>
+                        <!-- <button type="button" class="btn btn-sm btn-primary">Get Recipes</button> -->
+                    </td>
+                  </tr>
+                {% endfor %}   
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info" role="alert">
+            There are no users in the database.
+        </div>
+        {% endif %}
+          
+    </div>
+{% endblock content %}
