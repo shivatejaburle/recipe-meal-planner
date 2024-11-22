@@ -18,7 +18,13 @@
         <div class="table-responsive recipe-container m-5">
             <h1>Recipe Meal Planner</h1>
             <table class="table table-bordered border-dark">
-                <caption>Meal Plan designed by <strong class="text-primary">{{request.user|capfirst}}</strong>.</caption>
+                <caption>Meal Plan designed by 
+                  {% if request.user.first_name != '' and request.user.last_name != '' %}
+                    <strong class="text-primary">{{request.user.first_name|capfirst}} {{request.user.last_name|capfirst}}</strong>.
+                  {% else %}
+                    <strong class="text-primary">{{request.user|capfirst}}</strong>.
+                  {% endif %}
+                </caption>
                 <thead class="bg-info">
                   <tr>
                     <th scope="col">Day</th>

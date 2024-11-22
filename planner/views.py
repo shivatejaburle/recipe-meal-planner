@@ -1,15 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from planner.models import Recipe
 from planner.forms import RecipeForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.contrib.messages.views import SuccessMessageMixin
 
-# Create your views here.
-
+# Home Page
 class IndexView(TemplateView):
     template_name = 'planner/index.html'
 
@@ -165,3 +165,11 @@ class UserRecipeView(LoginRequiredMixin, ListView):
         # Filter by logged in user and order by day_of_the_week and meal_type
         queryset = self.model.objects.filter(user=self.kwargs['pk']).order_by('day_of_the_week', 'meal_type')
         return queryset
+
+# Update User Profile
+class UserProfileView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = User
+    template_name = 'planner/user_form.html'
+    fields = ['first_name', 'last_name']
+    success_url = reverse_lazy('planner:recipe_list')
+    success_message = "Your profile was updated successfully."

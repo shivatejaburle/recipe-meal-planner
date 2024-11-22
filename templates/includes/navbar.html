@@ -18,6 +18,9 @@
               <a class="nav-link" href="{% url 'planner:recipe_list' %}">Home</a>
             {% endif %}
           </li>
+          <li>
+            <a class="nav-link" href="{% url 'planner:user_update' request.user.id %}">Profile</a>
+          </li>
         {% endif %}
       </ul>
 

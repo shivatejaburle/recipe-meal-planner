@@ -37,12 +37,12 @@ class Donate(TemplateView):
 # it won't have the csrf token
 @csrf_exempt
 def handler(request):
-    print("======= Handler =========")
+    # print("======= Handler =========")
     # only accept POST request.
     if request.method == "POST":
-        print("======= POST Request =========")
+        # print("======= POST Request =========")
         try:
-            print("======= try 1 =========")
+            # print("======= try 1 =========")
             # get the required parameters from post request.
             payment_id = request.POST.get('razorpay_payment_id', '')
             razorpay_order_id = request.POST.get('razorpay_order_id', '')
@@ -55,26 +55,26 @@ def handler(request):
 
             # verify the payment signature.
             result = razorpay_client.utility.verify_payment_signature(params_dict)
-            print("=========== Result : ", result, " ==========")
+            # print("=========== Result : ", result, " ==========")
             if result is not None:
                 amount = 10000
                 try:
-                    print("======= try 2 =========")
+                    # print("======= try 2 =========")
                     # capture the payment
                     razorpay_client.payment.capture(payment_id, amount)
                     
                     # render success page on successful capture of payment
                     return render(request, 'payment/success.html')
                 except:
-                    print("======= except 2 =========")
+                    # print("======= except 2 =========")
                     # if there is an error while capturing payment.
                     return render(request, 'payment/failure.html')
             else:
-                print("======= signature verification fail =========")
+                # print("======= signature verification fail =========")
                 # if signature verification fails.
                 return render(request, 'payment/failure.html')
         except:
-            print("======= except 1 =========")
+            # print("======= except 1 =========")
             # if we don't find the required parameters in POST data
             # return HttpResponseBadRequest()
             return render(request, 'payment/failure.html')
