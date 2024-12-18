@@ -5,6 +5,7 @@ app_name = 'planner'
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name = 'index_view'),
+    path('login_success/', views.login_success, name='login_success'),
     path('recipes/', views.RecipeList.as_view(), name='recipe_list'),
     path('create/', views.RecipeCreate.as_view(), name='recipe_create'),
     path('recipes/pdf', views.RecipeListPdf.as_view(), name='recipe_list_pdf'),

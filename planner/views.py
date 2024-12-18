@@ -173,3 +173,10 @@ class UserProfileView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     fields = ['first_name', 'last_name']
     success_url = reverse_lazy('planner:recipe_list')
     success_message = "Your profile was updated successfully."
+
+# Redirecting the users based on their role
+def login_success(request):
+    if request.user.is_superuser:
+        return redirect('planner:admin_view')
+    else:
+        return redirect('planner:recipe_list')

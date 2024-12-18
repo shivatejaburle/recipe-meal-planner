@@ -142,7 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # django-allauth
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/recipes/'
+LOGIN_REDIRECT_URL = '/login_success/'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
