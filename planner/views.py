@@ -157,12 +157,11 @@ class AdminView(LoginRequiredMixin, ListView):
 # User Recipes
 class UserRecipeView(LoginRequiredMixin, ListView):
     model = Recipe
-    pk_url_kwarg = 'pk'
     template_name = 'planner/user_recipe_list.html'
     context_object_name = 'recipe_list'
     
     def get_queryset(self, *args, **kwargs):
-        # Filter by logged in user and order by day_of_the_week and meal_type
+        # Filter by user and order by day_of_the_week and meal_type
         queryset = self.model.objects.filter(user=self.kwargs['pk']).order_by('day_of_the_week', 'meal_type')
         return queryset
 
