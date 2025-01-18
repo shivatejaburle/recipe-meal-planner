@@ -22,7 +22,7 @@
                 {% if recipe_list.0.user.first_name != '' and recipe_list.0.user.last_name != '' %}
                   <strong class="text-primary">{{recipe_list.0.user.first_name|capfirst}} {{recipe_list.0.user.last_name|capfirst}}</strong>.
                 {% else %}
-                  <strong class="text-primary">{{request.user|capfirst}}</strong>.
+                  <strong class="text-primary">{{recipe_list.0.user|capfirst}}</strong>.
                 {% endif %}
               </caption>
               <thead class="bg-info">
