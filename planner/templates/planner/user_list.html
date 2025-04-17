@@ -25,10 +25,10 @@
                 <tbody>
                 {% for user in user_list  %}
                   <tr>
-                    <td>{{user.first_name}}</td>
-                    <td>{{user.last_name}}</td>
-                    <td>{{user.username}}</td>
-                    <td>
+                    <td class="align-middle">{{user.first_name}}</td>
+                    <td class="align-middle">{{user.last_name}}</td>
+                    <td class="align-middle">{{user.username}}</td>
+                    <td class="align-middle">
                         <button type="button" class="btn btn-sm btn-outline-primary"
                             onclick="window.location = '{% url 'planner:user_recipe_view' user.id %}'">
                           Get Meal Plan

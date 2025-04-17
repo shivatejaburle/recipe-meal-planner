@@ -29,16 +29,16 @@
               <tbody>
               {% for recipe in recipe_list  %}
                 <tr>
-                  <td>{{recipe.get_weekday_label}}</td>
-                  <td>{{recipe.get_meal_type_label}}</td>
-                  <td>{{recipe.recipe_name}}</td>
-                  <td>{{recipe.recipe_description}}</td>
-                  <td>
-                      <button type="button" class="btn btn-sm btn-primary"
+                  <td class="align-middle">{{recipe.get_weekday_label}}</td>
+                  <td class="align-middle">{{recipe.get_meal_type_label}}</td>
+                  <td class="align-middle">{{recipe.recipe_name}}</td>
+                  <td class="align-middle">{{recipe.recipe_description}}</td>
+                  <td class="align-middle">
+                      <button type="button" class="btn btn-sm btn-primary m-1"
                           onclick="window.location = '{% url 'planner:recipe_update' recipe.id %}'">
                         Update
                       </button>
-                      <button type="button" class="btn btn-sm btn-danger"
+                      <button type="button" class="btn btn-sm btn-danger m-1"
                           onclick="window.location = '{% url 'planner:recipe_delete' recipe.id %}'">
                         Delete
                       </button>
