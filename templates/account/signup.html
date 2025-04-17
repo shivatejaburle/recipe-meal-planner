@@ -1,20 +1,41 @@
 {% extends 'account/base_entrance.html' %}
-{% load bootstrap5 %}
+{% load static %}
 
 {% block title %}
     Recipe Meal Planner - Sign Up
 {% endblock title %}
 
 {% block content %}
-    <div class="container mt-3">
-        <h1>Sign Up</h1>
-        <p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
-        <form action="" method="post">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </form>
+<div class="container my-5">
+    <div class="p-5 text-center bg-body-tertiary rounded-3">
+      <img src="{% static 'planner/img/rmp.png' %}" alt="rmp" width="200">
+      <h1 class="text-body-emphasis">Recipe Meal Planner</h1>
+      <p class="col-lg-8 mx-auto fs-3 text-danger">
+        Please use test credentials provided in GitHub Documentation
+      </p>
+      {% if not request.user.is_authenticated %}
+      <div class="d-inline-flex gap-2 mb-5">
+        <button 
+          class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" 
+          type="button" 
+          onclick="window.location.href='{% url 'account_signup' %}'"
+        >
+          Home
+        </button>
+      </div>
+      {% else %}
+      <div class="d-inline-flex gap-2 mb-5">
+        <button 
+          class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill" 
+          type="button" 
+          onclick="window.location.href='#'"
+        >
+        Go Home
+        </button>
+      </div>
+      {% endif %}
     </div>
+  </div>
 {% endblock content %}
     
     
