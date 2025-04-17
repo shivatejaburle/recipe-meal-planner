@@ -4,13 +4,21 @@
     ],
     "cSpell.ignoreWords": [
         "allauth",
+        "apikey",
+        "burle",
         "collectstatic",
+        "cszp",
         "dotenv",
         "mvhado",
         "mysite",
         "runserver",
         "rxdrsfnl",
+        "shivateja",
+        "sqlitecloud",
+        "staticfiles",
         "venv",
-        "virtualenv"
+        "vercel",
+        "virtualenv",
+        "wsgi"
     ]
 }
