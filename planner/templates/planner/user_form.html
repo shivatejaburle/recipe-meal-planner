@@ -1,0 +1,21 @@
+{% extends 'base_master.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Recipe Meal Planner - Update Profile
+{% endblock title %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1>Update Profile</h1>
+        <hr>
+        <form class="mb-3" action="" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-danger" 
+                onclick="window.location='{% url 'planner:recipe_list' %}'">Cancel</button>
+        </form>
+    </div>
+{% endblock content %}

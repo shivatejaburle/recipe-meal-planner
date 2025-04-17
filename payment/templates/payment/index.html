@@ -1,0 +1,48 @@
+{% extends 'base_master.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="p-5 text-center bg-body-tertiary rounded-3">
+    <h1 class="text-body-emphasis">Recipe Meal Planner</h1>
+    <img class="img-fluid" src="{% static 'payment/img/donate-to-support.png' %}" alt="donate-to-support">
+    <p class="col-lg-8 mx-auto fs-5 text-muted">
+      If you love our meal planning application, support us by donating..!
+    </p>
+    <div class="d-inline-flex gap-2 mb-5">
+      <button class="btn btn-warning btn-lg" type="button" id="donate-btn">Donate ₹ 100 ❤️</button>
+    </div>
+  </div>
+</div>
+
+<!-- Razorpay's Javascript code. -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  var options = {
+    
+    // Enter the Key ID generated from the Dashboard.
+    key: "{{ razorpay_merchant_key }}", 
+    
+    // Amount is in currency subunits.
+    // Default currency is INR. Hence, 500 refers to 50000 paisa
+    amount: "{{ razorpay_amount }}", 
+    currency: "{{ currency }}",
+    
+    // Your/store name.
+    name: "Recipe Meal Planner Donation - Razorpay", 
+    
+    // Pass the `id` obtained in the response of Step 1
+    order_id: "{{ razorpay_order_id }}", 
+    callback_url: "{{ callback_url }}",
+  };
+  
+  // Initialize razorpay with the options.
+  var rzp1 = new Razorpay(options);
+  
+  // add event listener to the payment button.
+  document.getElementById("donate-btn").onclick = function (e) {
+    rzp1.open();
+    // e.preventDefault();
+  };
+</script>
+{% endblock content %}

@@ -1,0 +1,79 @@
+{% extends 'base_master.html' %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="row justify-content-between">
+          <div class="col-6">
+            <h1 class="text-primary">{{recipe_list.0.user|capfirst}} Recipes</h1>
+          </div>
+          <div class="col-6">
+            <button type="button" class="btn btn-primary btn-lg float-end"
+                onclick = "generatePdf('{{recipe_list.0.user}}')">
+              Download PDF
+            </button>
+          </div>
+        </div>
+        <hr>
+        {% if recipe_list %}
+        <div class="table-responsive recipe-container m-5">
+            <h1>Recipe Meal Planner</h1>
+            <table class="table table-bordered border-dark">
+              <caption>Meal Plan designed by 
+                {% if recipe_list.0.user.first_name != '' and recipe_list.0.user.last_name != '' %}
+                  <strong class="text-primary">{{recipe_list.0.user.first_name|capfirst}} {{recipe_list.0.user.last_name|capfirst}}</strong>.
+                {% else %}
+                  <strong class="text-primary">{{recipe_list.0.user|capfirst}}</strong>.
+                {% endif %}
+              </caption>
+              <thead class="bg-info">
+                  <tr>
+                    <th scope="col">Day</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Recipe Name</th>
+                    <th scope="col">Recipe Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for recipe in recipe_list  %}
+                  <tr>
+                    <td>{{recipe.get_weekday_label}}</td>
+                    <td>{{recipe.get_meal_type_label}}</td>
+                    <td>{{recipe.recipe_name}}</td>
+                    <td>{{recipe.recipe_description}}</td>
+                  </tr>
+                {% endfor %}   
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-secondary btn-lg mb-3"
+            onclick = "window.location='{% url 'planner:admin_view' %}'">
+          Back
+        </button>
+        {% else %}
+        <div class="alert alert-info" role="alert">
+            There are no users in the database.
+        </div>
+        {% endif %}
+          
+    </div>
+
+    <!-- Reference: https://ekoopmans.github.io/html2pdf.js/ -->
+
+    <!-- html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+    <script>
+      function generatePdf(username)
+      {
+          var element = document.querySelector('.recipe-container');
+          var opt = {
+            filename: username+'_recipe_meal_planner.pdf',
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
+          };
+
+          html2pdf().set(opt).from(element).save();
+      }
+    </script>
+  
+{% endblock content %}

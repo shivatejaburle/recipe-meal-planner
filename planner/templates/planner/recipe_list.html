@@ -1,0 +1,61 @@
+{% extends 'base_master.html' %}
+
+{% block content %}
+  <div class="container mt-3">
+      <div class="row justify-content-between">
+        <div class="col-6">
+          <h1>Meal Plan</h1>
+        </div>
+        <div class="col-6">
+          <button type="button" class="btn btn-primary btn-lg float-end"
+              onclick = "window.location='{% url 'planner:recipe_create' %}'">
+            Add
+          </button>
+        </div>
+      </div>
+      <hr>
+      {% if recipe_list %}
+      <div class="table-responsive">
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Day</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Recipe Name</th>
+                  <th scope="col">Recipe Description</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for recipe in recipe_list  %}
+                <tr>
+                  <td class="align-middle">{{recipe.get_weekday_label}}</td>
+                  <td class="align-middle">{{recipe.get_meal_type_label}}</td>
+                  <td class="align-middle">{{recipe.recipe_name}}</td>
+                  <td class="align-middle">{{recipe.recipe_description}}</td>
+                  <td class="align-middle">
+                      <button type="button" class="btn btn-sm btn-primary m-1"
+                          onclick="window.location = '{% url 'planner:recipe_update' recipe.id %}'">
+                        Update
+                      </button>
+                      <button type="button" class="btn btn-sm btn-danger m-1"
+                          onclick="window.location = '{% url 'planner:recipe_delete' recipe.id %}'">
+                        Delete
+                      </button>
+                  </td>
+                </tr>
+              {% endfor %}   
+              </tbody>
+          </table>
+      </div>
+      <button type="button" class="btn btn-info btn-lg mb-3"
+          onclick = "window.location='{% url 'planner:recipe_list_pdf' %}'">
+        Generate PDF
+      </button>
+      {% else %}
+      <div class="alert alert-info" role="alert">
+          There are no recipes in the database.
+      </div>
+      {% endif %}    
+  </div>
+{% endblock content %}

@@ -1,0 +1,19 @@
+{% extends 'base_master.html' %}
+{% load static %}
+
+{% block header %}
+  {% include 'payment/includes/navbar.html' %}
+{% endblock header %}
+
+{% block content %}
+<div class="container">
+  <div class="p-2 text-center bg-body-tertiary rounded-3">
+    <img class="img-fluid" src="{% static 'payment/img/payment-success.png' %}" alt="payment-success" width="100">
+    <h1 class="text-body-emphasis">Recipe Meal Planner</h1>
+    <img class="img-fluid" src="{% static 'payment/img/thank-you.jpg' %}" alt="thank-you">
+    <div class="mx-5 mt-3">
+      <a class="btn btn-primary btn-lg" href="{% url 'account_login' %}">Back</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}
