@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'planner.apps.PlannerConfig',
-    'payment.apps.PaymentConfig'
+    # 'payment.apps.PaymentConfig'
 ]
 
 MIDDLEWARE = [
