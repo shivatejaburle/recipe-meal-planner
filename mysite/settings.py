@@ -97,10 +97,6 @@ tmpPostgres = urlparse(os.environ.get("DATABASE_URL"))
 DATABASES = {
     'default': {
         'ENGINE' : os.environ.get('PG_ENGINE'),
-        # 'NAME' : os.environ.get('PG_DATABASE'),
-        # 'USER' : os.environ.get('PG_USER'),
-        # 'PASSWORD' : os.environ.get('PG_PASSWORD'),
-        # 'HOST' : os.environ.get('PG_HOST'),
         'NAME': tmpPostgres.path.replace('/', ''),
         'USER': tmpPostgres.username,
         'PASSWORD': tmpPostgres.password,
