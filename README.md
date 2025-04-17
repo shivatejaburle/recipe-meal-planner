@@ -9,6 +9,11 @@ Recipe Meal Planner is a Django based application where users can sign up to cre
 - Razorpay payment gateway integration for donations
 - Admin can view all users meal plan
 
+## Login
+- Project URL       :   https://recipe-meal-planner-stb.vercel.app/
+- Username  :   testuser
+- Password  :   test_12345
+
 ## Installing
 ### Clone the project
 
