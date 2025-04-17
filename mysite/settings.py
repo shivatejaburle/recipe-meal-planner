@@ -16,6 +16,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+from urllib.parse import urlparse
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -91,10 +93,19 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+tmpPostgres = urlparse(os.environ.get("DATABASE_URL"))
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR , 'recipe-meal-planner.sqlite3'),
+        'ENGINE' : os.environ.get('PG_ENGINE'),
+        # 'NAME' : os.environ.get('PG_DATABASE'),
+        # 'USER' : os.environ.get('PG_USER'),
+        # 'PASSWORD' : os.environ.get('PG_PASSWORD'),
+        # 'HOST' : os.environ.get('PG_HOST'),
+        'NAME': tmpPostgres.path.replace('/', ''),
+        'USER': tmpPostgres.username,
+        'PASSWORD': tmpPostgres.password,
+        'HOST': tmpPostgres.hostname,
+        'PORT' : os.environ.get('PG_PORT')
     }
 }
 
